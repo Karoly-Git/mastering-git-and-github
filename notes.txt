@@ -1,0 +1,148 @@
+# ------------------------------
+# Helpful Links
+# ------------------------------
+
+# Git installation guide
+https://github.com/git-guides/install-git
+
+# Official Git documentation
+https://git-scm.com/docs
+https://git-scm.com/
+
+
+# ------------------------------
+# Basic Directory and File Operations
+# ------------------------------
+
+dir                                             # List files and directories
+cd ..                                           # Move up one directory
+cd `dir_name or path`                           # Change to a specific directory
+mkdir `dir_name`                                # Create a new directory
+rmdir `dir_name`                                # Remove an empty directory
+
+echo `file content - optional` > `file_name`    # Create or overwrite a file with content
+del `file_name`                                 # Delete a file
+
+
+# ------------------------------
+# Git Configuration
+# ------------------------------
+
+# Set global user settings
+git config --global user.email `myemail@example.com`    # Set email
+git config --global user.name `My Name`                 # Set username
+
+
+# ------------------------------
+# Basic Git Workflow
+# ------------------------------
+
+git init                            # Initialize a Git repository
+git add `file_name`                 # Stage a specific file
+git add .                           # Stage all changes in the current directory
+git commit -m "Commit message"      # Commit staged changes with a message
+
+
+# ------------------------------
+# Working with branches
+# ------------------------------
+
+git checkout `branch_name`          # Switch to an existing branch
+git checkout `commit_id`            # Switch to a specific commit
+git checkout -b `new_branch`        # Create and switch to a new branch
+git switch `new_branch_name`        # Switch to a branch (alternative to `checkout`)
+git switch -c `new_branch_name`     # Create and switch to a new branch (alternative to `checkout`)
+git merge `branch_name`             # Merge a branch into the current branch
+git branch -d `branch_name`         # Delete a local branch (safe, checks for unmerged changes)
+git branch -D `branch_name`         # Force delete a local branch (ignores unmerged changes)
+
+
+# ------------------------------
+# Detached HEAD
+# ------------------------------
+
+git checkout `commit_id`            # Checkout a specific commit (detached HEAD)
+                                    # At this point, you're not on any branch
+git checkout `branch_name`          # Switch back to a branch
+
+# Important note about Detached HEAD:
+# - If you're in a detached HEAD state and make changes, they will be lost unless you commit and create a new branch or checkout a branch.
+
+
+# ------------------------------
+# Removing Files and Undoing Changes
+# ------------------------------
+
+# Deleting files
+git ls-files                        # List all tracked files
+git rm `file_name`                  # Remove a file from the working directory and staging area
+
+# Undo unstaged changes (restore a file to its last committed state)
+git checkout `file_name`            # Revert changes to the specified file
+
+# Removing untracked files
+git clean -dn                       # Show what would be removed (dry run)
+git clean -df                       # Actually remove untracked files
+
+# Undo staged changes
+git reset `file_name`               # Unstage a file
+git checkout `file_name`        	# Revert the file to its last committed state
+
+# Another way to undo staged changes
+git restore --staged `file_name`  	# Unstage a file
+git checkout `file_name`         	# Revert to the latest commit
+
+
+# ------------------------------
+# Deleting and Resetting Commits
+# ------------------------------
+
+# Soft reset (commit is deleted but changes are kept in the working directory)
+git reset --soft HEAD~1             # Move back 1 commit (or use HEAD~`n` for n commits)
+
+# Mixed reset (commit and changes are removed from staging area, but kept in the working directory)
+git reset HEAD~1                    # Default reset (staged changes removed)
+
+# Hard reset (commit, staging area, and working directory are all reset)
+git reset --hard HEAD~1             # All changes removed
+
+
+# ------------------------------
+# Committing Detached HEAD Changes
+# ------------------------------
+
+# If working in detached HEAD state and want to keep changes:
+git checkout `commit_id`                    # Checkout the commit
+git log                                     # View the commit history
+git branch                                  # Check current branch status
+git add .                                   # Stage changes
+git status                                  # Check the status of files
+git commit -m `Message`                     # Commit the changes
+git log                                     # View commit log
+git switch `branch_name`                    # Switch to an existing branch
+git branch `new_branch_name` `commit_id`    # Create a new branch from the detached HEAD commit
+git switch `new_branch_name`                # Switch to the newly created branch
+git merge `new_branch_name`                 # Merge changes from detached HEAD branch
+git log                                     # Confirm the merged changes
+git branch -D `new_branch_name`             # Delete the temporary branch (if no longer needed)
+
+
+# ------------------------------
+# .gitignore
+# ------------------------------
+
+# Some examples in the file to ignore different things
+
+*.log           # Ignore all `.log` extensions
+!test.log       # Do not ignore `test.log`
+
+folder-1/*      # Ignore everything in folder-1, but not the folder itself
+folder-2/       # Ignore folder-2 and all its contents
+
+
+# ------------------------------
+# Viewing Git Logs
+# ------------------------------
+
+git log         # View commit history
+                # To exit the log viewer, press 'q'
