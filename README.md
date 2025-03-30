@@ -1,4 +1,4 @@
-# Git & GitHub - The Complete Guide Course Journey
+# Git & GitHub - The Complete Guide Course Journey 
 
 This repository documents my learning journey from the **Git & GitHub - The Complete Guide** course by Academind and Maximilian Schwarzmüller. This course covers everything from version control basics to advanced Git workflows and GitHub collaboration.
 
