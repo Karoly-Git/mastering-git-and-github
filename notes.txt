@@ -48,7 +48,7 @@ git commit -m "Commit message"      # Commit staged changes with a message
 # ------------------------------
 
 git checkout `branch_name`          # Switch to an existing branch
-git checkout `commit_id`            # Switch to a specific commit
+git checkout `commit_id`            # Switch to a specific commit (see at detached Head)
 git checkout -b `new_branch`        # Create and switch to a new branch
 git switch `new_branch_name`        # Switch to a branch (alternative to `checkout`)
 git switch -c `new_branch_name`     # Create and switch to a new branch (alternative to `checkout`)
