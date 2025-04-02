@@ -183,3 +183,37 @@ git branch -D <branch name>     # Forcefully deletes the specified branch
 git reflog                      # Shows a history of all changes, including resets and checkouts
 git checkout <commit-id>        # Checks out a specific commit, entering detached HEAD mode
 git switch -c <branch name>     # Creates and switches to a new branch
+
+
+------------------------------------------------------------
+Fast-Forward merge
+------------------------------------------------------------
+
+master      m1      m2                      # Fast-Forward: works only if no additional commits in master after the new branch is created
+                                       ^    # Merge moves HEAD forward, but doesn't create a new commit
+new-branch  m1      m2  -->  n1  -->  n2    # New branch has commits n1 and n2 after branching from m2
+
+git merge <branch_name>                     # Merge the specified branch into the current branch  
+git merge --squash <branch_name>            # Merges the <branch_name> into the current branch as a single commit
+
+
+------------------------------------------------------------
+Non Fast-Forward (Recursive) merge
+------------------------------------------------------------
+
+git merge --no-ff <branch_name>          # Merges the specified branch into the current branch, ensuring a merge commit (no fast-forward)
+
+
+------------------------------------------------------------
+Rebasing
+------------------------------------------------------------
+
+master      m1  -->  m2  -->  m3               
+
+new-branch  m1       m2  -->  n1  -->  n2
+.
+.
+master      m1  -->  m2  -->  m3  -->  n1  -->  n2             
+
+new-branch  m1       m2  -->  m3  -->  n1  -->  n2
+
